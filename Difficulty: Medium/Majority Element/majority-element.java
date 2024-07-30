@@ -26,42 +26,39 @@ class Geeks
 }
 // } Driver Code Ends
 
-
-
-
+  
 //User function Template for Java
-
-class Solution
-{
-    static int majorityElement(int a[], int size)
-    {
-        // your code here
-          if(size==1){
-      return a[0]; // Return the single element in the array
+class Solution {
+    static boolean isMajority(int arr[], int size, int candidate) {
+        int count = 0;
+        for (int i = 0; i < size; i++) {
+            if (arr[i] == candidate) {
+                count++;
+            }
+        }
+        return count > size / 2;
     }
-    Arrays.sort(a);
-
-    int maxCount = 0;
-    int currentElement = a[0];
-    int currentCount = 1;
-
-    for(int i=1;i<size;i++){
-      if(a[i] == currentElement){
-        currentCount++;
-      } else {
-        // Reset count and element if count doesn't exceed half the size
-        if (currentCount <= size / 2) {
-          currentElement = a[i];
-          currentCount = 1;
-        } 
-      }
+    static int majorityElement(int arr[], int size) {
+        int candidate = findCandidate(arr, size);
+        if (isMajority(arr, size, candidate)) {
+            return candidate;
+        } else {
+            return -1;
+        }
     }
 
-    // Check if final count of last element surpasses half the size
-    if (currentCount > size / 2) {
-      return currentElement;
-    }
-
-    return -1; // No element appears more than half the times
+    static int findCandidate(int arr[], int size) {
+        int count = 0, candidate = -1;
+        for (int i = 0; i < size; i++) {
+            if (count == 0) {
+                candidate = arr[i];
+                count = 1;
+            } else if (arr[i] == candidate) {
+                count++;
+            } else {
+                count--;
+            }
+        }
+        return candidate;
     }
 }
