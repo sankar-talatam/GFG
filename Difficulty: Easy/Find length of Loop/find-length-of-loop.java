@@ -75,7 +75,7 @@ class Solution {
     // Function to find the length of a loop in the linked list.
     public int countNodesinLoop(Node head) {
         // Add your code here.
-        Node fast=head;
+         Node fast=head;
         Node slow=head;
         int c=1;
         while(fast!=null){
