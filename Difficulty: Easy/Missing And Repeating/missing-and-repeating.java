@@ -4,32 +4,29 @@ class Solution {
     // Function to find two elements in array
     ArrayList<Integer> findTwoElement(int arr[]) {
         // code here
-        int s1=0;
-        ArrayList<Integer> brr=new ArrayList<>();
-        HashMap<Integer,Integer> newHp=new HashMap<>();
-            for(int num : arr){
-                if(newHp.containsKey(num)){
-                    newHp.put(num,newHp.get(num)+1);
-                }
-                else{
-                    newHp.put(num,1);
-                }
-                s1+=num;
-        }
-        int s3=0;
-        for (int key : newHp.keySet()) {
-    if (newHp.get(key) == 2) {
-        s3=key;
-    }
-}
-        int n=arr.length;
-        int s2=0;
-        for(int i = 1; i <= n ; i++){
-            s2+=i;
-        }
-        int newS=s2-s1+s3;
-        brr.add(s3);
-        brr.add(newS);
-        return brr;
+        ArrayList<Integer> arList = new ArrayList<>();
+       HashMap<Integer,Integer> hmap = new HashMap<>();
+       Arrays.sort(arr);
+       int c = 0;
+       int[] newArr = new int[2];
+       int n = arr.length;
+       for(int i = 1 ; i <= n ; i++ ){
+           hmap.put(arr[i-1],hmap.getOrDefault(arr[i-1],0)+1);
+       }
+       for(int i = 1 ; i <= n ; i++){
+           if(hmap.getOrDefault(i,0) == 0){
+               newArr[1] = i;
+               c++;
+           }
+           else if(hmap.getOrDefault(i,0) == 2){
+               newArr[0] = i;
+               c++;
+           }
+           if(c == 2) break;
+       }
+       for(int i : newArr){
+           arList.add(i);
+       }
+       return arList;
     }
 }
