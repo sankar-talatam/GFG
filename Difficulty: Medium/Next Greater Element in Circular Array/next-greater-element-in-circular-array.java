@@ -1,29 +1,28 @@
 class Solution {
-    public ArrayList<Integer> nextLargerElement(int[] arr) {
-        ArrayList<Integer> result = new ArrayList<>();
-        int n = arr.length;
-        for (int i = 0; i < n; i++) {
-            int nextGreater = -1;
-
-            for (int j = i + 1; j < n; j++) {
-                if (arr[j] > arr[i]) {
-                    nextGreater = arr[j];
+    public ArrayList<Integer> nextGreater(int[] arr) {
+        // code here
+        ArrayList<Integer> arList = new ArrayList<>();
+        
+        for(int i = 0 ; i < arr.length; i++){
+            int val = -1;
+            for(int j = i+1 ; j < arr.length; j++){
+                if(arr[j] > arr[i]){
+                    val = arr[j];
                     break;
                 }
             }
-
-            if (nextGreater == -1) {
-                for (int j = 0; j < i; j++) {
-                    if (arr[j] > arr[i]) {
-                        nextGreater = arr[j];
+            if(val == -1){
+                for(int j = 0; j < i; j++){
+                    if(arr[j] > arr[i]){
+                        val = arr[j];
                         break;
                     }
                 }
             }
-
-            result.add(nextGreater);
+                arList.add(val);
+            
+            
         }
-
-        return result;
+        return arList;
     }
 }
