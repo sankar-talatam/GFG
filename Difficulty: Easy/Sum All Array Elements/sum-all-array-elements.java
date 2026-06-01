@@ -1,5 +1,5 @@
 class Solution {
-    public static int arraySum(int[] arr) {
+    public int arraySum(List<Integer> arr) {
         // code here
         int sum = 0;
         for(int i : arr){
@@ -7,4 +7,4 @@ class Solution {
         }
         return sum;
     }
-}
+};
