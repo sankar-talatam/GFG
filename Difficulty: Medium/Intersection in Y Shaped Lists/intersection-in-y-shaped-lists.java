@@ -1,4 +1,4 @@
-/*
+/* Structure of Linked List Node
 class Node {
     int data;
     Node next;
@@ -7,8 +7,7 @@ class Node {
         data = d;
         next = null;
     }
-}
-*/
+}*/
 
 class Solution {
     public Node intersectPoint(Node head1, Node head2) {
@@ -31,4 +30,3 @@ class Solution {
         return a; 
     }
 }
-
